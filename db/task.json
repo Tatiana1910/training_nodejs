@@ -1,0 +1,12 @@
+[
+  {
+    "id": "1",
+    "title": "Write a project",
+    "completed": false
+  },
+  {
+    "id": "2",
+    "title": "Do laundry",
+    "completed": false
+  }
+]
