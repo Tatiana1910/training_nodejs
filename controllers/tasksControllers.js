@@ -5,10 +5,12 @@ const {
   updateTaskService,
   deleteTaskService,
 } = require("../services/tasksServices");
+
 const { catchAsyncWrapper } = require("../utils/catchAsyncWrapper");
 
 const getTasks = catchAsyncWrapper(async (req, res, next) => {
-  const tasks = await getTasksService();
+  const { page = 1, limit = 10, completed } = req.query;
+  const tasks = await getTasksService(page, limit, completed);
   res.status(200).json(tasks);
 });
 
