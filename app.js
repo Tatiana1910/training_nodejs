@@ -1,10 +1,14 @@
 const express = require("express");
 const { tasksRouter } = require("./routes/tasksRouter");
+const { authRouter } = require("./routes/authRouter");
 
 const app = express();
 
 app.use(express.json());
+
 app.use("/tasks", tasksRouter);
+
+app.use("/auth", authRouter);
 
 app.use((error, req, res, next) => {
   console.log(error);
