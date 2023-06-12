@@ -1,12 +1,11 @@
 const { HttpError } = require("../utils/HttpError");
 const { Task } = require("../models/Task");
 
-const getTasksService = async (page, limit, completed) => {
+const getTasksService = async (page, limit, completed, userId) => {
   const skip = (page - 1) * limit;
   const filter = {
     owner: userId,
   };
-
   if (completed === "true") {
     filter.completed = true;
   } else if (completed === "false") {

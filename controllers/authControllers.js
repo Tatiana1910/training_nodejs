@@ -1,5 +1,9 @@
 const { catchAsyncWrapper } = require("../utils/catchAsyncWrapper");
-const { signupService, loginService } = require("../services/authServices");
+const {
+  signupService,
+  loginService,
+  logoutService,
+} = require("../services/authServices");
 
 const signup = catchAsyncWrapper(async (req, res, next) => {
   const newUser = await signupService(req.body);
@@ -11,7 +15,11 @@ const login = catchAsyncWrapper(async (req, res, next) => {
   res.status(200).json({ user, accessToken });
 });
 
-const logout = catchAsyncWrapper((req, res, next) => {});
+const logout = catchAsyncWrapper(async (req, res, next) => {
+  const userId = req.user._id;
+  await logoutService(userId);
+  res.status(200).json({ message: "Logout was successful" });
+});
 
 module.exports = {
   signup,
