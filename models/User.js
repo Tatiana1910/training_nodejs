@@ -13,12 +13,12 @@ const schema = new Schema({
   refresh_token: String,
 });
 
-schema.pre("save", async function (next) {
-  if (!this.isModified("password")) {
-    return next();
-  }
-  this.password = await bcrypt.hash(this.password, 12);
-});
+// schema.pre("save", async function (next) {
+//   if (!this.isModified("password")) {
+//     return next();
+//   }
+//   this.password = await bcrypt.hash(this.password, 12);
+// });
 
 const User = model("user", schema);
 

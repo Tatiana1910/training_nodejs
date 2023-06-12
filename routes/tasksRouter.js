@@ -1,4 +1,6 @@
 const express = require("express");
+const { auth } = require("../middleWares/auth");
+
 const {
   getTasks,
   getTask,
@@ -13,6 +15,7 @@ const {
 } = require("../utils/validation/taskValidationSchemas");
 
 const router = express.Router();
+router.use(auth);
 
 router
   .route("/")
